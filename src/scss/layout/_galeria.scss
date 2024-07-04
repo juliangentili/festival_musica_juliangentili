@@ -1,0 +1,86 @@
+@use "../base/variables" as v ;
+@use "../base/mixins" as m ;
+
+
+
+.galeria{
+
+    @include m.contenedor;
+
+    img{
+        height: 30rem;
+        object-fit: cover;
+
+    }
+
+
+    .galeria-imagenes{
+        display: grid;
+        grid-template-columns: repeat(1 ,1fr);
+        gap: 2rem;
+        @include m.telefono{
+            display: grid;
+            grid-template-columns: repeat(2 ,1fr);
+            gap: 2rem;
+        }
+        @include m.tablet{
+            display: grid;
+            grid-template-columns: repeat(3 ,1fr);
+            gap: 2rem;
+        }
+
+        @include m.dekstop{
+            display: grid;
+            grid-template-columns: repeat(4 ,1fr);
+            gap: 2rem;
+        }
+    }
+    }
+
+.modal{
+    position: fixed;
+    background-color: rgba(v.$negro,0.5);
+    inset: 0;
+    display: grid;
+    place-items: center;
+
+    animation: animacion_on ease-in 0.5s;
+
+    &.animacion_off{
+        animation: animacion_off ease-in 0.5s;
+    }
+    .btn-cerrar{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        border: none;
+        background-color: yellow;
+        color: rgb(2, 0, 0);
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    img{
+        width: 50%;
+        height: auto;
+    }
+}
+
+@keyframes animacion_on{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes animacion_off{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
